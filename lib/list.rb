@@ -1,9 +1,14 @@
 module List
   class Item
-    attr_accessor :name, :time_created
+    attr_accessor :name, :time_created, :complete
     def initialize(name)
       @name = name
       @time_created = Time.now
+      @complete = false
+    end
+
+    def check_off
+      @complete = true
     end
   end
 
