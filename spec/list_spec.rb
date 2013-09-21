@@ -31,4 +31,16 @@ describe List::Collection do
     	end
     end
   end
+
+  describe "#add_item" do
+    let(:list) { List::Collection.new(Time.now + 5000) }
+    let(:item) { List::Item.new("Fremen") }
+    context "when a new item is added to colleciton" do
+      it "pushes item to todo_list array" do
+        list.add_item(item)
+
+        expect(list.todo_list).to eq([item])
+      end
+    end
+  end
 end 
