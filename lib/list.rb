@@ -1,5 +1,4 @@
 module List
-  require 'whenever'
   class Item
     attr_accessor :name, :time_created, :complete
     def initialize(name)
@@ -27,14 +26,5 @@ module List
       @todo_list << item
     end
 
-    def timer
-      every :hour do
-        if Time.now >= @time_due
-          "Time up"
-        else
-          "Timer running"
-        end
-      end
-    end
   end
 end
