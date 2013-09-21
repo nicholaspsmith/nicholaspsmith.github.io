@@ -19,7 +19,6 @@ module List
       @todo_list = []
       @start_time = Time.now
       @time_due = time_due
-      timer
     end
 
     def add_item(item)

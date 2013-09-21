@@ -59,12 +59,4 @@ describe List::Collection do
     end
   end
 
-  describe "#timer" do 
-    let(:collection) { List::Collection.new(Time.now + 5000) }
-    context "when timer is called" do
-      it "checks if the current time is equal to or greater than end time" do
-        expect(collection.timer).to eq("Timer running")
-      end
-    end
-  end
 end 
