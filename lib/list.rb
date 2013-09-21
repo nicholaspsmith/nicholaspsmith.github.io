@@ -7,8 +7,8 @@ module List
     end
   end
 
-  class ListItem
-    attr_accessor :name
+  class Item
+    attr_accessor :name, :time_created
     def initialize(name)
       @name = name
       @time_created = Time.now
