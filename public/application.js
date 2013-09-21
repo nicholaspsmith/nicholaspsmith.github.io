@@ -1,6 +1,10 @@
+
+
 // Create global template
 var templateHtml = $('#templates .list').html(); 
 var template = _.template(templateHtml);
+
+
 
 // A view for the individual list items
 var ItemView = Backbone.View.extend({
@@ -28,7 +32,7 @@ var ItemView = Backbone.View.extend({
 
 
 // A view for the list (collection) of items
-var List = Backbone.View.extend({
+var ListView = Backbone.View.extend({
   initialize: function (options) {
     this.itemViews = [];
 
@@ -48,12 +52,10 @@ var List = Backbone.View.extend({
   render: function () {
     $(this.el).empty();
 
-    console.log('render');
-
     for (var i = 0; i < this.itemViews.length; i++){
       var newItem = this.itemViews[i].render().el;
       $(this.el).append(newItem);
-      console.log(newItem);
+      console.log('newItem: ', newItem);
     }
 
     return this;
@@ -72,14 +74,11 @@ var sampleTasks = [
   }
 ];
 
-var todolist = new List({
+var todolist = new ListView({
   tasks: sampleTasks,
   el: $('#todo-list')
 });
-console.log('going to render...');
 todolist.render();
-
-
 
 
 
@@ -99,3 +98,4 @@ $(document).on('submit', function (e) {
   e.preventDefault();
   console.log('submit');
 });
+

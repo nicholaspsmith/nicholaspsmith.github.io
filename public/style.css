@@ -1,12 +1,11 @@
 html{
-	background: #203542
+	background: #203542;
 
 }
 
 body{
 	display: -webkit-flex;
 	-webkit-flex-direction:column;
-	
 	background: #3E5B70;
 	width: 90%;
 	height: 90%;
@@ -40,6 +39,5 @@ button{
 	border-radius: 10px;
 	font-size: 100%;
 }
-
 
 

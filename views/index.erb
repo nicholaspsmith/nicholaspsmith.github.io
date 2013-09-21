@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="../public/style.css">
+  <title>Mission Impossible</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
   <body>
-      <!-- Template -->
+        <!-- Template -->
       <div id="templates">
         <script class="list" type="text/template">
-          <div class="list-item" style="height: 50px;">
+          <div class="list-item">
+            <%%=name%>
+            <%%=complete%>
           </div>
         </script>
       </div>
@@ -15,16 +20,18 @@
     <form>
       <input type='text' name='task' placeholder='Enter your task here.'>
     </form>
-    <div id="todo-list"><p>asdf</p></div>
+    <div class='main'>
+      <div id="todo-list"></div>
+    </div>
     <form>
       <button type='button'>Submit</button>
     </form>
 
-    <!-- 3rd-party scripts -->
-      <script src="vendor/jquery-1.10.2.js" type="text/javascript"></script>
-      <script src="vendor/underscore.js" type="text/javascript"></script>
-      <script src="vendor/backbone.js" type="text/javascript"></script>
+      <!-- 3rd-party scripts -->
+    <script src="vendor/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="vendor/underscore.js" type="text/javascript"></script>
+    <script src="vendor/backbone.js" type="text/javascript"></script>
 
-      <script type="text/javascript" src="application.js"></script>
+    <script type="text/javascript" src="application.js"></script>
   </body>
 </html>
