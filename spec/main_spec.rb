@@ -3,7 +3,7 @@ require 'bundler/setup'
 require 'rspec'
 require_relative '../do'
 
-describe Do::Task do
+describe Do::Tasks do
 
 end 
 
