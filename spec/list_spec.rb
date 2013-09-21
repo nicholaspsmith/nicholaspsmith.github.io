@@ -7,6 +7,7 @@ require_relative '../lib/list'
 
 describe List::Item do
   describe ".initialize" do
+    let(:item) { List::Item.new("Fremen") }
     context "when list item is created" do
     	it "creates a new list item with name and current time" do
     		item1 = List::Item.new("Fremen")
@@ -15,6 +16,20 @@ describe List::Item do
     		expect(item1.name).to eq("Fremen")
     		expect(item1.time_created).to eq(time)
     	end
+
+      it "creates an attribue 'comlete' that defaults to false" do
+        expect(item.complete).to eq(false)
+      end
+    end
+  end
+
+  describe "#check_off" do
+    let (:item) { List::Item.new("Fremen") }
+    context "when an item is completed" do
+      it "changes the complete attribute of the item to true" do
+        item.check_off
+        expect(item.complete).to eq(true)
+      end
     end
   end
 end
@@ -43,4 +58,5 @@ describe List::Collection do
       end
     end
   end
+
 end 
