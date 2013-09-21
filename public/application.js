@@ -1,1 +1,3 @@
-// Javascript
+window.setInterval(function(){
+  // @TODO check to see if time is up...
+}, 30000);
