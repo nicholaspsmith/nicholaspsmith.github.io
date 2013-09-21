@@ -14,7 +14,7 @@ body{
 	border-radius: 10px;
 }
 
-form, div{
+form, .main{
 	background: #70968C;
 	padding: 20px;
 	border-radius: 10px;
@@ -22,7 +22,7 @@ form, div{
 	height: 10%;
 }
 
-div{
+.main{
 	height:75%;
 }
 
