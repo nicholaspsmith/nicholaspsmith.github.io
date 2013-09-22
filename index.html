@@ -2,28 +2,32 @@
 <html>
 <head>
   <title>Mission List</title>
+  <link rel="stylesheet" href="vendor/foundation.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  
   <script src='https://cdn.firebase.com/v0/firebase.js'></script>
 </head>
   <body>
-    <h1>Agent Missions</h1>
-    <h2>Complete the tasks before this mission self destructs</h2>
-    
+    <h1> { MI:List }</h1>
+    <h2>Enter objectives to complete before this mission self destructs</h2>
     <form>
-      <div id="countdown"></div>
-      <input type='text' name='task' id='task' placeholder='Enter your task here.'>
+      <div class="countdown">
+        <div id="countdown"></div>
+      </div>
+      <input type='text' name='task' id='task' placeholder='Enter Mission Objectives.'>
     </form>
     <div class='main'>
+      <p>Your mission should you choose/decide to accept it ...</p>
       <div id="todo-list" class="todo-list"></div>
     </div>
     
     <form id="time-input">
-      <input type="text" name="hours" id="hours" placeholder="Number of hours">
+      <input type="text" name="hours" id="hours" placeholder="Hours to Self Destructtion">
 
       <button type='button' id="start">Accept Mission</button>
-
+      <P class="disclaim">As always, should fail to complete your mission, the Secretary will disavow any knowledge of your actions.</P>
     </form>
 
       <!-- 3rd-party scripts -->

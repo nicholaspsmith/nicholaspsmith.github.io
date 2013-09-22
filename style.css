@@ -1,3 +1,5 @@
+/*FONTS*/
+
 @import url(http://fonts.googleapis.com/css?family=Lekton:400,700);
 
 @font-face
@@ -35,14 +37,26 @@ h1{
 	margin: 0 auto;
 }
 
-.item, h2 {
+.item, h2, p {
 	font-family: 'Lekton', sans-serif;
 	color: #FFF;
 }
 
+p {
+	font-size: .9em;
+}
+
+.disclaim {
+	color: #cecece;
+	font-size: .8em;
+	padding: 2em;
+	margin-bottom: 0;
+	font-style: italic;
+}
 h2 {
 	font-weight: 200;
 	font-size: 100%;
+	text-align: center;
 }
 
 form, .main{
@@ -51,6 +65,7 @@ form, .main{
 	border-radius: 10px;
 	margin: 10px;
 }
+
 
 button {
 	width: 100%;
@@ -97,6 +112,7 @@ button {
 	border-radius: 4px;
 	font-family: Impossible2, sans-serif;
 	margin-bottom: 10px;
+	text-align: center;
 }
 #start{
 	width: 50%;
@@ -113,7 +129,7 @@ button {
 	text-decoration: line-through;
 	color: #999;
 }
-#countdown{
+.countdown{
 	font-size: 30px;
 	text-align: center;
 	font-family: Impossible, sans-serif;
