@@ -1,30 +1,42 @@
-html{
-	background: #203542;
-
+@font-face
+{
+	font-family: Impossible;
+	src: url(fonts/IMPOS2.ttf);
 }
+
+@font-face
+{
+	font-family: Impossible2;
+	src: url(fonts/IMPOS3.ttf);
+}
+
+
+html{
+	background-image:url(images/FireBIG.jpg);}
 
 body{
 	display: -webkit-flex;
 	-webkit-flex-direction:column;
-	background: #3E5B70;
 	width: 90%;
 	height: 90%;
 	margin: 20px auto;
+	padding: 12px;
 	border-radius: 10px;
+	max-width: 750px;
+	background: rgba(48, 56, 48, 0.7);
 }
-
+h1{
+	color: red;
+	font-size: 45px;
+	font-family: Impossible, sans-serif;
+	margin: 0 auto;
+}
 form, .main{
-	background: #70968C;
+	background: rgba(0, 0, 0, 0.79);
 	padding: 20px;
 	border-radius: 10px;
 	margin: 10px;
-	height: 10%;
 }
-
-.main{
-	height:75%;
-}
-
 
 input{
 	margin: 0 auto;
@@ -39,5 +51,30 @@ button{
 	border-radius: 10px;
 	font-size: 100%;
 }
+#start{
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+}
 
+
+.item {
+	float: left;
+	clear: left;
+	color: red;
+	font-family: Impossible2, sans-serif;
+	font-size: 30px;
+}
+#todo-list {
+	min-width: 30px;
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+}
+
+#task {
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+}
 
