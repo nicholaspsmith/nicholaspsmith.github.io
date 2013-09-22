@@ -12,24 +12,20 @@
 
 
     <form>
+      <div id="countdown"></div>
       <input type='text' name='task' id='task' placeholder='Enter your task here.'>
     </form>
     <div class='main'>
       <div id="todo-list" class="todo-list"></div>
     </div>
     
-    <form>
-      <input type="time" name="due-time" id="due-time">
+    <form id="time-input">
       <input type="text" name="hours" id="hours" placeholder="Number of hours">
-
-      <button type='button' id="start">Start!</button>
+      <button type='button' id="start">Accept Mission</button>
     </form>
 
       <!-- 3rd-party scripts -->
     <script src="vendor/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="vendor/underscore.js" type="text/javascript"></script>
-    <script src="vendor/backbone.js" type="text/javascript"></script>
-
 
     <script type="text/javascript" src="application.js"></script>
   </body>

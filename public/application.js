@@ -17,7 +17,7 @@ $('#task').keypress(function (e){
     firebase.child(item).set(newListObject);
 
   $('#task').val('');
-  } 
+  }
 });
 
 // Update firebase on change
@@ -38,7 +38,7 @@ var displayNewTask = function (name, complete){
     $('<div class="item"/>').text(name).prependTo($('#todo-list'));
   } else {
     if (name !== true){//For some reason, it kept printing 'true'
-    $('<div class="item checked"/>').text(name).prependTo($('#todo-list'));
+    $('#todo-list').append($('<div class="item checked"/>').text(name));
     }
   }
 };
@@ -69,19 +69,24 @@ $(document).on('click', '#start', function (e) {
   // convert to seconds
   timeLeft *= 3600;
 
-  // Get time (in millis) and convert to seconds
-  var dateTime = new Date().getTime() / 1000;
-  var settime =  dateTime + timeLeft;
+  if (timeLeft > 0){
+    // Get time (in millis) and convert to seconds
+    var dateTime = new Date().getTime() / 1000;
+    var settime =  dateTime + timeLeft;
 
-  firebaseDue.set({'due':settime});
+    firebaseDue.set({'due':settime});
 
-  start();
+    start();
+  }
 });
 
 function start () {
   // Runs every 1 second
   this.running = true;
-  this.tick = setInterval(timer, 1000);
+  var tick = setInterval(timer, 1000);
+  $('#task').hide();
+  $('#time-input').hide();
+  $('#countdown').show();
 };
 
 function stop () {
@@ -91,30 +96,59 @@ function stop () {
 function timer() {
   if (running){
     timeLeft -= 1;
-    console.log('time left: ', timeLeft);
+    //console.log('time left: ', timeLeft);
     if (timeLeft <= 0){
       alert('Time up!');
       stop();
+      // Delete all items from firebase
+      firebase.remove();
+      location.reload();
+
     }
 
-    // if (timeLeft % 10 == 0){
-    //   firebaseDue.on('child_changed', function(snapshot){
-    //   time = snapshot.exportVal();
-    // };
+    if (timeLeft % 10 === 0){
+      firebaseDue.once('value', function(snapshot){
+        var seconds = new Date().getTime() / 1000;
+        var dbTime = snapshot.exportVal().due;
+        timeLeft = Math.floor(dbTime - seconds);
+        console.log('syncing time with db');
+      });
+    }
+    console.log('timeLeft', timeLeft);
+    var hours = Math.floor(timeLeft/60/60);
+    hours %= 24;
+    var minutes = Math.floor(timeLeft/60);
+    minutes %= 60;
+    var seconds = timeLeft;
+    seconds %= 60;
+    if (seconds >= 10 && minutes >= 10){
+      var countdown = hours + ":" + minutes + ":" + seconds;
+      $('#countdown').html(countdown);
+    }
+    else if (minutes >= 10) {
+      countdown = hours + ":" + minutes + ":0" + seconds;
+      $('#countdown').html(countdown);
+    } else if (seconds >= 10){
+      countdown = hours + ":0" + minutes + ":" + seconds;
+      $('#countdown').html(countdown);
+    } else {
+      countdown = hours + ":0" + minutes + ":0" + seconds;
+      $('#countdown').html(countdown);
+    }
   }
 };
 
 
 $(document).ready(function () {
-  console.log('firebase: ', firebaseDue); 
+  $('#countdown').hide();
 
   firebaseDue.once('value', function(dataSnapshot) {
 
-    x = dataSnapshot.exportVal();
+    dbTime = dataSnapshot.exportVal().due;
 
     var seconds = new Date().getTime() / 1000;
 
-    var difference = x.due - seconds;
+    var difference = dbTime - seconds;
     // Drop the decimal
     difference = Math.floor(difference);
     console.log('Time remaining in seconds:', difference);
