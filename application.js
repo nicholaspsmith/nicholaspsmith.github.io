@@ -116,7 +116,7 @@ function timer() {
     if (timeLeft <= 0 && window.running){
 
       $('html').addClass('fail');
-      //alert('Mission Failed!');
+      $('h1').html('Mission:Failed');
       setTimeout(stop, 5000);
     }
 
