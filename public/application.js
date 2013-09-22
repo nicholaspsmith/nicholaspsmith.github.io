@@ -1,5 +1,6 @@
 // Create reference to Firebase database
 var firebase = new Firebase('https://todonkey.firebaseio.com/items');
+var firebaseDue = new Firebase('https://todonkey.firebaseio.com/due');
 
 $('#task').keypress(function (e){
 
@@ -54,9 +55,9 @@ $(document).on('click', '.item', function (e){
 
   firebase.child(title).set({name: title, complete: true});
 
-
   displayCompleteTask($(this), title);
 });
+
 
 
 
@@ -64,19 +65,65 @@ $(document).on('click', '.item', function (e){
 $(document).on('click', '#start', function (e) {
   e.preventDefault();
 
-  var timeDue = $('#due-time').val()
+  timeLeft = $('#hours').val();
+  // convert to seconds
+  timeLeft *= 3600;
 
-  var currentTime = new Date;
-  var currentHour = currentTime.getHours();
-  var currentMinute = currentTime.getMinutes();
+  // Get time (in millis) and convert to seconds
+  var dateTime = new Date().getTime() / 1000;
+  var settime =  dateTime + timeLeft;
 
-  console.log('Current time hours: ', currentHour);
-  console.log('Time Due: ', timeDue);
+  firebaseDue.set({'due':settime});
+
+  start();
 });
 
-// Runs every 1 second
-var tick = setInterval(timer, 1000);
+function start () {
+  // Runs every 1 second
+  this.running = true;
+  this.tick = setInterval(timer, 1000);
+};
+
+function stop () {
+  running = false;
+}
 
 function timer() {
-  //timeLeft = 
+  if (running){
+    timeLeft -= 1;
+    console.log('time left: ', timeLeft);
+    if (timeLeft <= 0){
+      alert('Time up!');
+      stop();
+    }
+  }
 };
+
+
+$(document).ready(function () {
+  console.log('firebase: ', firebaseDue); 
+
+  firebaseDue.once('value', function(dataSnapshot) {
+
+    x = dataSnapshot.exportVal();
+
+    var seconds = new Date().getTime() / 1000;
+
+    var difference = x.due - seconds;
+    // Drop the decimal
+    difference = Math.floor(difference);
+    console.log('Time remaining in seconds:', difference);
+    timeLeft = difference;
+
+    if (difference > 0){
+      start();
+    }
+  });
+});
+
+
+
+
+
+
+
