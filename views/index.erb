@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
 </head>
   <body>
         <!-- Template -->
@@ -12,7 +13,11 @@
         <script class="list" type="text/template">
           <div class="list-item">
             <%%=name%>
-            <%%=complete%>
+            <%% if (complete === false) { %>
+              Incomplete
+            <%% } else { %>
+              <b>Complete!</b>
+            <%% } %>
           </div>
         </script>
       </div>

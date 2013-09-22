@@ -1,4 +1,8 @@
+// Create reference to Firebase database
+var firebase = new Firebase('https://todonkey.firebaseio.com/');
+var firebaseList = new Firebase('https://todonkey.firebaseio.com/list');
 
+console.log(firebaseList);
 
 // Create global template
 var templateHtml = $('#templates .list').html(); 
@@ -11,12 +15,16 @@ var ItemView = Backbone.View.extend({
   className: 'item',
 
   events: {
-    // @ TODO
+    'click': ':checkOff'
   },
 
   initialize: function (options) {
     this.name = options.name;
     this.complete = false;
+  },
+
+  checkOff: function () {
+    this.complete = true;
   },
 
   render: function() {
@@ -45,6 +53,8 @@ var ListView = Backbone.View.extend({
 
   addItem: function (name){
     var newItemView = new ItemView({ name: name });
+    // Add to firebase DB
+    firebaseUsers.push({"name": name, "complete": false});
     this.itemViews.push(newItemView);
     $(this.el).append(newItemView.render().el);
   },
@@ -63,23 +73,23 @@ var ListView = Backbone.View.extend({
 });
 
 
-var sampleTasks = [
-  {
-    name: "Take out trash",
-    complete: false
-  },
-  {
-    name: "Walk dog",
-    complete: false
-  }
-];
+// var sampleTasks = [
+//   {
+//     name: "Take out trash",
+//     complete: false
+//   },
+//   {
+//     name: "Walk dog",
+//     complete: false
+//   }
+// ];
+
 
 var todolist = new ListView({
   tasks: sampleTasks,
   el: $('#todo-list')
 });
 todolist.render();
-
 
 
 var checkTime = function () {
@@ -96,6 +106,6 @@ window.setInterval(function(){
 // Call when list item is submitted
 $(document).on('submit', function (e) {
   e.preventDefault();
-  console.log('submit');
+  todolist.addItem($('[name=task').val());
 });
 

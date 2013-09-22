@@ -9,4 +9,3 @@ get '/' do
   # Populate list
   erb :index
 end
-
