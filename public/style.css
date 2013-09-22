@@ -12,7 +12,8 @@
 
 
 html{
-	background-image:url(images/FireBIG.jpg);}
+	background-image:url(images/FireBIG.jpg);
+}
 
 body{
 	display: -webkit-flex;
@@ -69,11 +70,12 @@ button {
 }
 
 #task {
-	min-width: 300px;
+	max-width: 200px;
 	display: block;
 	margin: 0 auto;
-	font-family: Impossible2, sans-serif;
 	font-size: 20px;
+	font-family: Impossible, sans-serif;
+	padding: 5px;
 }
 .checked{
 	text-decoration: line-through;
