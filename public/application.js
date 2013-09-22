@@ -26,5 +26,5 @@ firebase.on('child_added', function(snapshot){
 // Display a task
 var displayNewTask = function (name, complete){
   //$('#todo-list').prependTo()
-  $('<div/>').text(name).prependTo($('#todo-list'));
+  $('<div class="item"/>').text(name).prependTo($('#todo-list'));
 };
