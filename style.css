@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lekton:400,700);
+
 @font-face
 {
 	font-family: Impossible;
@@ -32,6 +34,17 @@ h1{
 	font-family: Impossible, sans-serif;
 	margin: 0 auto;
 }
+
+.item, h2 {
+	font-family: 'Lekton', sans-serif;
+	color: #FFF;
+}
+
+h2 {
+	font-weight: 200;
+	font-size: 100%;
+}
+
 form, .main{
 	background: rgba(0, 0, 0, 0.79);
 	padding: 20px;
@@ -79,4 +92,5 @@ button {
 }
 .checked{
 	text-decoration: line-through;
+	color: #999;
 }
