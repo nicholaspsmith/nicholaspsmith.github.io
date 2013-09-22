@@ -30,7 +30,7 @@ firebase.on('child_changed', function(snapshot){
 });
 firebaseDue.on('child_changed', function(snapshot){
   var time = snapshot.val();
-  console.log('time changed');
+
   // Reload page
   location.reload();
 });
@@ -55,7 +55,7 @@ var displayCompleteTask = function (task, title){
 $(document).on('click', '.item', function (e){
   if (window.running){
     var title = $(this).html();
-    console.log("Index: ", title);
+
 
     firebase.child(title).set({name: title, complete: true});
 
@@ -131,7 +131,6 @@ function timer() {
 
     var message = "This message will self destruct in: ";
 
-    console.log('timeLeft', timeLeft);
     var hours = Math.floor(timeLeft/60/60);
     hours %= 24;
     var minutes = Math.floor(timeLeft/60);
@@ -190,7 +189,6 @@ var startCountdown = function () {
     var seconds = new Date().getTime() / 1000;
 
     var difference = Math.floor(dbTime - seconds);
-    console.log('Time remaining in seconds:', difference);
     timeLeft = difference;
 
     if (difference > 0){
