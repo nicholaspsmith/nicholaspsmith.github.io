@@ -66,8 +66,7 @@ button{
 	font-size: 30px;
 }
 #todo-list {
-	min-width: 30px;
-	max-width: 200px;
+
 	display: block;
 	margin: 0 auto;
 }
