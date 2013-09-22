@@ -30,7 +30,7 @@ body{
 }
 h1{
 	color: red;
-	font-size: 45px;
+	font-size: 55px;
 	font-family: Impossible, sans-serif;
 	margin: 0 auto;
 }
@@ -58,11 +58,7 @@ button {
 	border-radius: 10px;
 	font-size: 100%;
 }
-#start{
-	max-width: 200px;
-	display: block;
-	margin: 0 auto;
-}
+
 #due-time{
 	max-width: 200px;
 	display: block;
@@ -83,14 +79,46 @@ button {
 }
 
 #task {
+	width: 75%;
+	display: block;
+	margin: 0 auto;
+	font-size: 30px;
+	padding: 5px;
+	border-radius: 4px;
+	font-family: Impossible2, sans-serif;
+}
+#hours{
+	width: 50%;
 	max-width: 200px;
 	display: block;
 	margin: 0 auto;
 	font-size: 20px;
-	font-family: Impossible, sans-serif;
 	padding: 5px;
+	border-radius: 4px;
+	font-family: Impossible2, sans-serif;
+	margin-bottom: 10px;
+}
+#start{
+	width: 50%;
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+	font-size: 30px;
+	padding: 5px;
+	border-radius: 4px;
+	font-family: Impossible2, sans-serif;
+	margin-bottom: 10px;
 }
 .checked{
 	text-decoration: line-through;
 	color: #999;
+}
+#countdown{
+	font-size: 30px;
+	text-align: center;
+	font-family: Impossible, sans-serif;
+	color: red;
+	width: 100px;
+	display: block;
+	margin: 0 auto;
 }
