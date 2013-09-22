@@ -26,10 +26,10 @@ firebase.on('child_added', function(snapshot){
   displayNewTask(message.name, message.complete);
 });
 firebase.on('child_changed', function(snapshot){
-  console.log('child chagned');
   var message = snapshot.val();
   displayCompleteTask(message.name, message.complete);
 });
+
 
 
 // Display a task
@@ -96,6 +96,11 @@ function timer() {
       alert('Time up!');
       stop();
     }
+
+    // if (timeLeft % 10 == 0){
+    //   firebaseDue.on('child_changed', function(snapshot){
+    //   time = snapshot.exportVal();
+    // };
   }
 };
 
