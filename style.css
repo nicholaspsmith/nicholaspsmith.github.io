@@ -89,6 +89,7 @@ button {
 	clear: left;
 	color: red;
 	font-size: 30px;
+	cursor: pointer;
 }
 #todo-list {
 
@@ -137,7 +138,7 @@ button {
 	text-align: center;
 	font-family: Impossible, sans-serif;
 	color: red;
-	width: 100px;
+	width: 80%;
 	display: block;
 	margin: 0 auto;
 }
