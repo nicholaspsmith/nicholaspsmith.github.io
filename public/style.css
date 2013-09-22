@@ -38,14 +38,7 @@ form, .main{
 	margin: 10px;
 }
 
-input{
-	margin: 0 auto;
-	text-align: center;
-	width: 100%;
-	height: 80%;
-	border-radius: 10px;
-}
-button{
+button {
 	width: 100%;
 	height: 80%;
 	border-radius: 10px;
@@ -56,7 +49,12 @@ button{
 	display: block;
 	margin: 0 auto;
 }
-
+#due-time{
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
 
 .item {
 	float: left;
@@ -76,4 +74,6 @@ button{
 	display: block;
 	margin: 0 auto;
 }
-
+.checked{
+	text-decoration: line-through;
+}
