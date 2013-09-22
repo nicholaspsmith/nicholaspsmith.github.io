@@ -60,7 +60,6 @@ button {
 	float: left;
 	clear: left;
 	color: red;
-	font-family: Impossible2, sans-serif;
 	font-size: 30px;
 }
 #todo-list {
@@ -70,9 +69,11 @@ button {
 }
 
 #task {
-	max-width: 200px;
+	min-width: 300px;
 	display: block;
 	margin: 0 auto;
+	font-family: Impossible2, sans-serif;
+	font-size: 20px;
 }
 .checked{
 	text-decoration: line-through;

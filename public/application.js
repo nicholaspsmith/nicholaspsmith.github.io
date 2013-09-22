@@ -25,6 +25,7 @@ firebase.on('child_added', function(snapshot){
   displayNewTask(message.name, message.complete);
 });
 firebase.on('child_changed', function(snapshot){
+  console.log('child chagned');
   var message = snapshot.val();
   displayCompleteTask(message.name, message.complete);
 });
@@ -32,40 +33,29 @@ firebase.on('child_changed', function(snapshot){
 
 // Display a task
 var displayNewTask = function (name, complete){
-  //$('#todo-list').prependTo()
-  $('<div class="item"/>').text(name, complete).prependTo($('#todo-list'));
+  if (complete == false){
+    $('<div class="item"/>').text(name).prependTo($('#todo-list'));
+  } else {
+    if (name !== true){//For some reason, it kept printing 'true'
+    $('<div class="item checked"/>').text(name).prependTo($('#todo-list'));
+    }
+  }
 };
 // Complete a task
-var displayNewTask = function (name, complete){
-  //$('#todo-list').prependTo()
-  $('<div class="item checked"/>').text(name, complete).prependTo($('#todo-list'));
+var displayCompleteTask = function (task, title){
+  $(task).remove();
+  displayNewTask(title, true);
 };
 
 $(document).on('click', '.item', function (e){
 
   var title = $(this).html();
   console.log("Index: ", title);
-  
-
 
   firebase.child(title).set({name: title, complete: true});
 
 
-
-  // var temp = [];
-  // for (var i = 0; i < index; i++){
-  //   // Add items that are before selected index to a temporary array
-  //   var child = document.getElementsByClassName('todo-list')[i].firstElementChild;
-
-  //   temp.push(child);
-  // }
-
-  // for (var i = 0; i < index+1; i++){
-  //   var popRef = firebase.pop();
-  // }
-
-  // Remove from page
-  //this.remove();
+  displayCompleteTask($(this), title);
 });
 
 
