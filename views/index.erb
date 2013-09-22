@@ -8,22 +8,10 @@
   <script src='https://cdn.firebase.com/v0/firebase.js'></script>
 </head>
   <body>
-        <!-- Template -->
-      <div id="templates">
-        <script class="list" type="text/template">
-          <div class="list-item">
-            <%%=name%>
-            <%% if (complete === false) { %>
-              Incomplete
-            <%% } else { %>
-              <b>Complete!</b>
-            <%% } %>
-          </div>
-        </script>
-      </div>
+
 
     <form>
-      <input type='text' name='task' placeholder='Enter your task here.'>
+      <input type='text' name='task' id='task' placeholder='Enter your task here.'>
     </form>
     <div class='main'>
       <div id="todo-list"></div>
