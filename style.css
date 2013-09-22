@@ -15,6 +15,12 @@
 }
 
 html{
+	background-color: grey;
+
+	transition: background-image 2s linear;
+	-webkit-transition: background-image 2s linear; /* Safari, Chrome*/
+}
+.fail{
 	background-image:url(images/FireBIG.jpg);
 }
 
@@ -141,4 +147,8 @@ button {
 	width: 80%;
 	display: block;
 	margin: 0 auto;
+}
+li {
+	list-style-type: square;
+	color: #2e3;
 }
