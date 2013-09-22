@@ -114,8 +114,10 @@ function timer() {
     timeLeft -= 1;
 
     if (timeLeft <= 0 && window.running){
-      alert('Time up!');
-      stop();
+
+      $('html').addClass('fail');
+      //alert('Mission Failed!');
+      setTimeout(stop, 5000);
     }
 
     if (timeLeft % 10 === 0){
