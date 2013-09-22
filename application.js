@@ -3,7 +3,6 @@ var firebase = new Firebase('https://todonkey.firebaseio.com/items');
 var firebaseDue = new Firebase('https://todonkey.firebaseio.com/due');
 
 $('#task').keypress(function (e){
-
   var input = $('#task').val();
 
   if(jQuery.trim(input).length > 0 && e.keyCode == 13){
@@ -29,7 +28,12 @@ firebase.on('child_changed', function(snapshot){
   var message = snapshot.val();
   displayCompleteTask(message.name, message.complete);
 });
-
+firebaseDue.on('child_changed', function(snapshot){
+  var time = snapshot.val();
+  console.log('time changed');
+  // Reload page
+  location.reload();
+});
 
 
 // Display a task
@@ -49,19 +53,20 @@ var displayCompleteTask = function (task, title){
 };
 
 $(document).on('click', '.item', function (e){
+  if (window.running){
+    var title = $(this).html();
+    console.log("Index: ", title);
 
-  var title = $(this).html();
-  console.log("Index: ", title);
+    firebase.child(title).set({name: title, complete: true});
 
-  firebase.child(title).set({name: title, complete: true});
-
-  displayCompleteTask($(this), title);
+    displayCompleteTask($(this), title);
+  }
 });
 
 
 
 
-// @TODO Start timer 
+// Start timer 
 $(document).on('click', '#start', function (e) {
   e.preventDefault();
 
@@ -82,7 +87,7 @@ $(document).on('click', '#start', function (e) {
 
 function start () {
   // Runs every 1 second
-  this.running = true;
+  window.running = true;
   var tick = setInterval(timer, 1000);
   $('#task').hide();
   $('#time-input').hide();
@@ -90,7 +95,7 @@ function start () {
 };
 
 function stop () {
-  running = false;
+  window.running = false;
   // Delete all items from firebase
   firebase.remove();
 
@@ -102,12 +107,13 @@ function stop () {
 }
 
 function timer() {
-  if (running){
+  if (window.running){
     checkComplete();
+
 
     timeLeft -= 1;
 
-    if (timeLeft <= 0){
+    if (timeLeft <= 0 && window.running){
       alert('Time up!');
       stop();
     }
@@ -158,26 +164,21 @@ var checkComplete = function () {
       // Will be called with a messageSnapshot for each message under message_list.
       var name = messageSnapshot.child('name').val();
       var complete = messageSnapshot.child('complete').val();
-      // Do something with message.
-      console.log('list entry: ', name, complete);
 
-      if (complete === false){
-        console.log('not complete');
-      } else {
+      if (complete !== false){
         completeCount += 1;
-        console.log('completeCount: ', completeCount);
-      }
+      } 
       allCount += 1;
     });
     if (allCount === completeCount){
       alert('Mission:Complete');
       stop();
-      //delete everything
     }
   });
 };
 
 var startCountdown = function () {
+
 
   firebaseDue.once('value', function(dataSnapshot) {
 
@@ -198,7 +199,7 @@ var startCountdown = function () {
 
 
 $(document).ready(function () {
-
+  window.running = false;
   $('#countdown').hide();
   startCountdown();
 });
