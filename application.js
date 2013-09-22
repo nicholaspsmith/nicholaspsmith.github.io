@@ -3,7 +3,6 @@ var firebase = new Firebase('https://todonkey.firebaseio.com/items');
 var firebaseDue = new Firebase('https://todonkey.firebaseio.com/due');
 
 $('#task').keypress(function (e){
-
   var input = $('#task').val();
 
   if(jQuery.trim(input).length > 0 && e.keyCode == 13){
@@ -16,7 +15,7 @@ $('#task').keypress(function (e){
 
     firebase.child(item).set(newListObject);
 
-  $('#task').val('');
+    $('#task').val('');
   }
 });
 
@@ -29,16 +28,21 @@ firebase.on('child_changed', function(snapshot){
   var message = snapshot.val();
   displayCompleteTask(message.name, message.complete);
 });
-
+firebaseDue.on('child_changed', function(snapshot){
+  var time = snapshot.val();
+  console.log('time changed');
+  // Reload page
+  location.reload();
+});
 
 
 // Display a task
 var displayNewTask = function (name, complete){
   if (complete == false){
-    $('<div class="item"/>').text(name).prependTo($('#todo-list'));
+    $('<li class="item"/>').text(name).prependTo($('#todo-list'));
   } else {
     if (name !== true){//For some reason, it kept printing 'true'
-    $('#todo-list').append($('<div class="item checked"/>').text(name));
+    $('#todo-list').append($('<li class="item checked"/>').text(name));
     }
   }
 };
@@ -49,19 +53,20 @@ var displayCompleteTask = function (task, title){
 };
 
 $(document).on('click', '.item', function (e){
+  if (window.running){
+    var title = $(this).html();
+    console.log("Index: ", title);
 
-  var title = $(this).html();
-  console.log("Index: ", title);
+    firebase.child(title).set({name: title, complete: true});
 
-  firebase.child(title).set({name: title, complete: true});
-
-  displayCompleteTask($(this), title);
+    displayCompleteTask($(this), title);
+  }
 });
 
 
 
 
-// @TODO Start timer 
+// Start timer 
 $(document).on('click', '#start', function (e) {
   e.preventDefault();
 
@@ -82,7 +87,7 @@ $(document).on('click', '#start', function (e) {
 
 function start () {
   // Runs every 1 second
-  this.running = true;
+  window.running = true;
   var tick = setInterval(timer, 1000);
   $('#task').hide();
   $('#time-input').hide();
@@ -90,20 +95,27 @@ function start () {
 };
 
 function stop () {
-  running = false;
+  window.running = false;
+  // Delete all items from firebase
+  firebase.remove();
+
+  // Change time to zero
+  firebaseDue.set({'due':0});
+
+  // Reload page
+  location.reload();
 }
 
 function timer() {
-  if (running){
+  if (window.running){
+    checkComplete();
+
+
     timeLeft -= 1;
-    //console.log('time left: ', timeLeft);
-    if (timeLeft <= 0){
+
+    if (timeLeft <= 0 && window.running){
       alert('Time up!');
       stop();
-      // Delete all items from firebase
-      firebase.remove();
-      location.reload();
-
     }
 
     if (timeLeft % 10 === 0){
@@ -114,6 +126,9 @@ function timer() {
         console.log('syncing time with db');
       });
     }
+
+    var message = "This message will self destruct in: ";
+
     console.log('timeLeft', timeLeft);
     var hours = Math.floor(timeLeft/60/60);
     hours %= 24;
@@ -121,36 +136,58 @@ function timer() {
     minutes %= 60;
     var seconds = timeLeft;
     seconds %= 60;
+
     if (seconds >= 10 && minutes >= 10){
       var countdown = hours + ":" + minutes + ":" + seconds;
-      $('#countdown').html(countdown);
+      $('#countdown').html(message + countdown);
     }
     else if (minutes >= 10) {
       countdown = hours + ":" + minutes + ":0" + seconds;
-      $('#countdown').html(countdown);
+      $('#countdown').html(message + countdown);
     } else if (seconds >= 10){
       countdown = hours + ":0" + minutes + ":" + seconds;
-      $('#countdown').html(countdown);
+      $('#countdown').html(message + countdown);
     } else {
       countdown = hours + ":0" + minutes + ":0" + seconds;
-      $('#countdown').html(countdown);
+      $('#countdown').html(message + countdown);
     }
   }
 };
 
 
-$(document).ready(function () {
-  $('#countdown').hide();
+var checkComplete = function () {
+  var allCount = 0;
+  var completeCount = 0;
+
+  firebase.once('value', function(allMessagesSnapshot){
+    allMessagesSnapshot.forEach(function(messageSnapshot) {
+      // Will be called with a messageSnapshot for each message under message_list.
+      var name = messageSnapshot.child('name').val();
+      var complete = messageSnapshot.child('complete').val();
+
+      if (complete !== false){
+        completeCount += 1;
+      } 
+      allCount += 1;
+    });
+    if (allCount === completeCount){
+      alert('Mission:Complete');
+      stop();
+    }
+  });
+};
+
+var startCountdown = function () {
+
 
   firebaseDue.once('value', function(dataSnapshot) {
 
-    dbTime = dataSnapshot.exportVal().due;
+  dbTime = dataSnapshot.exportVal().due;
+
 
     var seconds = new Date().getTime() / 1000;
 
-    var difference = dbTime - seconds;
-    // Drop the decimal
-    difference = Math.floor(difference);
+    var difference = Math.floor(dbTime - seconds);
     console.log('Time remaining in seconds:', difference);
     timeLeft = difference;
 
@@ -158,6 +195,13 @@ $(document).ready(function () {
       start();
     }
   });
+};
+
+
+$(document).ready(function () {
+  window.running = false;
+  $('#countdown').hide();
+  startCountdown();
 });
 
 
