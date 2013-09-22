@@ -14,7 +14,6 @@
 	src: url(fonts/IMPOS3.ttf);
 }
 
-
 html{
 	background-image:url(images/FireBIG.jpg);
 }
@@ -66,6 +65,10 @@ form, .main{
 	margin: 10px;
 }
 
+.main {
+	display: block;
+	white-space: nowrap;
+}
 
 button {
 	width: 100%;
