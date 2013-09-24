@@ -1,7 +1,7 @@
 /*global document, window, location, $, jQuery, console, alert, Firebase, setInterval, setTimeout*/
 var firebase = new Firebase('https://todonkey.firebaseio.com/items');
 var firebaseDue = new Firebase('https://todonkey.firebaseio.com/due');
-var timeLeft, dbTime;
+var timeLeft, dbTime, success;
 
 $('#task').keypress(function (e) {
     "use strict";
@@ -47,8 +47,8 @@ var checkComplete = function () {
             allCount += 1;
         });
         if (allCount === completeCount) {
-            alert('Mission:Complete');
-            stop();
+            window.success = true;
+            setTimeout(stop, 5000);
         }
     });
 };
@@ -60,6 +60,8 @@ function timer() {
         timeLeft -= 1;
 
         if (timeLeft <= 0 && window.running) {
+            var over = true;
+            var success = false;
             $('html').addClass('fail');
             $('#todo-list').remove();
             $('h1').html('Mission:Failed');
@@ -80,19 +82,25 @@ function timer() {
         hours = (Math.floor(timeLeft / 60 / 60)) % 24;
         minutes = (Math.floor(timeLeft / 60)) % 60;
         seconds = timeLeft % 60;
-        if (seconds >= 10 && minutes >= 10) {
-            countdown = hours + ":" + minutes + ":" + seconds;
-            $('#countdown').html(message + countdown);
-        } else if (minutes >= 10) {
-            countdown = hours + ":" + minutes + ":0" + seconds;
-            $('#countdown').html(message + countdown);
-        } else if (seconds >= 10) {
-            countdown = hours + ":0" + minutes + ":" + seconds;
-            $('#countdown').html(message + countdown);
+        if (over === true) {
+            $('#countdown').html("Game Over");
+        } else if (window.success === true) {
+            $('#countdown').html("Mission Complete");
         } else {
-            countdown = hours + ":0" + minutes + ":0" + seconds;
-            $('#countdown').html(message + countdown);
-        }
+            if (seconds >= 10 && minutes >= 10) {
+                countdown = hours + ":" + minutes + ":" + seconds;
+                $('#countdown').html(message + countdown);
+            } else if (minutes >= 10) {
+                countdown = hours + ":" + minutes + ":0" + seconds;
+                $('#countdown').html(message + countdown);
+            } else if (seconds >= 10) {
+                countdown = hours + ":0" + minutes + ":" + seconds;
+                $('#countdown').html(message + countdown);
+            } else {
+                countdown = hours + ":0" + minutes + ":0" + seconds;
+                $('#countdown').html(message + countdown);
+            }
+        } 
     }
 }
 
