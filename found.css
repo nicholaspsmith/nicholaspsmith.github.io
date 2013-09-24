@@ -26,3 +26,7 @@ i {
   margin-top:50px ;
   position: absolute;
 }
+
+body {
+  background-image: url(images/MI-Back.jpg)
+}
