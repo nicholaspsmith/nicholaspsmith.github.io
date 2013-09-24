@@ -1,0 +1,28 @@
+.top-bar-section ul li a:hover {
+  background-color: #222222 !important;
+}
+
+.white {
+  color: #fff;
+}
+
+i {
+/*  vertical-align: middle;*/
+
+}
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.center {
+  text-align: center;
+  vertical-align: center;
+}
+
+.container {
+  margin-top:50px ;
+  position: absolute;
+}
