@@ -58,10 +58,10 @@ function timer() {
     if (window.running) {
         checkComplete();
         timeLeft -= 1;
-
+        var message, hours, minutes, countdown, seconds, dbTime, over;
         if (timeLeft <= 0 && window.running) {
-            var over = true;
-            var success = false;
+            over = true;
+            success = false;
             $('html').addClass('fail');
             $('#todo-list').remove();
             $('h1').html('Mission:Failed');
@@ -70,14 +70,13 @@ function timer() {
 
         if (timeLeft % 10 === 0) {
             firebaseDue.once('value', function (snapshot) {
-                var seconds, dbTime;
                 seconds = new Date().getTime() / 1000;
                 dbTime = snapshot.exportVal().due;
                 timeLeft = Math.floor(dbTime - seconds);
                 console.log('syncing time with db');
             });
         }
-        var message, hours, minutes, seconds, countdown;
+
         message = "This message will self destruct in: ";
         hours = (Math.floor(timeLeft / 60 / 60)) % 24;
         minutes = (Math.floor(timeLeft / 60)) % 60;
@@ -100,7 +99,7 @@ function timer() {
                 countdown = hours + ":0" + minutes + ":0" + seconds;
                 $('#countdown').html(message + countdown);
             }
-        } 
+        }
     }
 }
 
