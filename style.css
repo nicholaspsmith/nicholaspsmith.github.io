@@ -14,7 +14,6 @@
 	src: url(fonts/IMPOS3.ttf);
 }
 
-
 html{
 	background-color: grey;
 
@@ -72,6 +71,10 @@ form, .main{
 	margin: 10px;
 }
 
+.main {
+	display: block;
+	white-space: nowrap;
+}
 
 button {
 	width: 100%;
