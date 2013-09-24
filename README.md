@@ -7,3 +7,4 @@ Mission List
 
 Built with jQuery and Firebase API
 
+1.0
