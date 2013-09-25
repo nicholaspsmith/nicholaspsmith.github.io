@@ -213,6 +213,7 @@ var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
 });
 
 $(document).on('click', '.login', function () {
+    console.log('login pushed');
     auth.login('facebook');
 });
 
