@@ -201,6 +201,21 @@ firebaseDue.on('child_changed', function () {
     location.reload();
 });
 
+var firebaseAuth = new Firebase('https://todonkey.firebaseio.com/');
+var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
+    if (error) {
+        alert("Login error");
+    } else if (user) {
+        alert("Logged in as ", user.id);
+    } else {
+        console.log("Not logged in");
+    }
+});
+
+$(document).on('click', '.login', function () {
+    auth.login('facebook');
+});
+
 $(document).ready(function () {
     "use strict";
     window.running = false;
