@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Mission List</title>
-  <link rel="stylesheet" href="vendor/foundation.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="vendor/foundation.css">
+  <link rel="stylesheet" type="text/css" href="found.css">
+<!--   <link rel="stylesheet" type="text/css" href="style.css">  -->
 
   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   
-  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <!--<script src='https://cdn.firebase.com/v0/firebase.js'></script>  -->
 </head>
   <body>
-    <h1> { MI:List }</h1>
-    <h2>Enter objectives to complete before this mission self destructs</h2>
-    <form>
-      <div class="countdown">
-        <div id="countdown"></div>
-      </div>
-      <input type='text' name='task' id='task' placeholder='Enter Mission Objectives:'>
-    </form>
-    <div class='main'>
-      <p>Your mission should you choose/decide to accept it ...</p>
-      <div id="todo-list" class="todo-list"></div>
+    <div class="row">
+      <nav class="top-bar contain-to-grid">
+        <ul class="right"> 
+          <form>
+            <li class="divider left large-1 small-1">
+              <i class="icon-facebook-sign white icon-large"></i>
+            </li>  
+            <li class="username divider left large-4 small-5">
+              <input type="text" placeholder="Username" name="username" id="username"/>
+            </li>
+              <li class="divider left large-1 small-1">
+                <i class="icon-key white icon-large"></i>
+              </li>
+            <li class="divider left large-4 small-5">
+              <input type="password" placeholder="Password" name="password">
+            </li>
+          </form>
+        </ul>
+      </nav>
     </div>
-    
-    <form id="time-input">
-      <input type="text" name="hours" id="hours" placeholder="Hours to Self-Destruct">
-
-      <button type='button' id="start">Accept Mission</button>
-      <P class="disclaim
-      ">As always, should fail to complete your mission, the Secretary will disavow any knowledge of your actions...GoodLuck</P>
-    </form>
-
-<!--     <audio autoplay="autoplay">  
+    <div class="row container">  
+      <div class="column large-8 small-9 Absolute-Center">
+        <div class="row">
+          <h1 class="center"> { MI:List }</h1>
+          <h3 class="center"> Enter objectives to complete before this mission self destructs
+          </h3>
+        </div>
+        <div class="row">
+          <form>
+            <div class="countdown">
+              <div id="countdown"></div>
+            </div>
+            <input type='text' name='task' id='task' placeholder='Enter Mission Objectives:'>
+          </form>
+        <div> 
+        <div class='row'>
+          <p>Your mission should you choose/decide to accept it ...</p>
+          <div id="todo-list" class="todo-list"></div>
+        </div>
+        <div class='row'>
+          <form id="time-input">
+            <input type="text" name="hours" id="hours" placeholder="Hours to Self-Destruct">
+            <button type='button' id="start">Accept Mission</button>
+            <P class="disclaim"> As always, should fail to complete your mission, the Secretary will disavow any knowledge of your actions...GoodLuck</P>
+          </form>
+        </div>
+      </div>
+    </div>  
+   <!--  <audio autoplay="autoplay">  
       <source src="audio/mitheme.mp3" />  
     </audio> --> 
-
-      <!-- 3rd-party scripts -->
+    <!-- 3rd-party scripts -->
     <script src="vendor/jquery-1.10.2.js" type="text/javascript"></script>
-
     <script type="text/javascript" src="application.js"></script>
   </body>
 </html>
