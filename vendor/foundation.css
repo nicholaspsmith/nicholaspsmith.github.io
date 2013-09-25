@@ -1318,7 +1318,7 @@ blockquote p {
 
   .show-for-print {
     display: inherit !important; } }
-button, .button {
+/*button, .button {
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
@@ -1486,7 +1486,7 @@ button, .button {
       border-radius: 1000px; } }
 @media only screen and (min-width: 768px) {
   button, .button {
-    display: inline-block; } }
+    display: inline-block; } }*/
 /* Standard Forms */
 form {
   margin: 0 0 1em; }
