@@ -204,16 +204,26 @@ firebaseDue.on('child_changed', function () {
 var firebaseAuth = new Firebase('https://todonkey.firebaseio.com/');
 var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
     if (error) {
-        alert("Login error");
+        console.log("Login error: ", error.code);
     } else if (user) {
-        alert("Logged in as ", user.id);
+        $('h1').html('Welcome agent ' + user.last_name);
+        console.log('drive updated');
+        auth.id = user.id;
+        auth.name = user.name;
+        auth.provider = "facebook";
+
     } else {
-        console.log("Not logged in");
+        console.log('TODO');
+        // TODO show stuff that fremen tells me to 
     }
 });
 
 $(document).on('click', '.login', function () {
     auth.login('facebook');
+});
+
+$(document).on('click', '.icon-key', function () {
+    auth.logout();
 });
 
 $(document).ready(function () {
