@@ -206,21 +206,24 @@ var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
     if (error) {
         console.log("Login error: ", error.code);
     } else if (user) {
-        console.log(user);
-        console.log(user.username);
-        console.log(user.displayName);
-        alert("Welcome " + user.first_name + ", are you ready?");
+        $('h1').html('Welcome agent ' + user.last_name);
+        console.log('drive updated');
+        auth.id = user.id;
+        auth.name = user.name;
+        auth.provider = "facebook";
+
     } else {
-        console.log("Not logged in");
+        console.log('TODO');
+        // TODO show stuff that fremen tells me to 
     }
 });
 
 $(document).on('click', '.login', function () {
-    var username = $('#username').val();
-    auth.login('facebook', {
-        email: username
-    });
-    console.log('login as: ', username);
+    auth.login('facebook');
+});
+
+$(document).on('click', '.icon-key', function () {
+    auth.logout();
 });
 
 $(document).ready(function () {
