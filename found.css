@@ -86,14 +86,13 @@ button {
   padding: .5em 1.5em;
 }
 
-#hours{
-  width:200px;
+#minutes{
+  width:50%;
   display: block;
   margin: 0 auto;
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding: 5px;
   border-radius: 4px;
-  font-family: Impossible2, sans-serif;
   margin-bottom: 10px;
   text-align: center;
 }
