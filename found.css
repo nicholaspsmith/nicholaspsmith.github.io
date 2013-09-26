@@ -18,19 +18,18 @@ h1{
   font-family: Impossible, sans-serif;
   margin: 0 auto;
 }
-.item, h4, p  {
+.item, h4, p, li  {
   font-family: 'Lekton', sans-serif;
   color: #09c12b;
   font-weight: normal;
 }
 
-
-.top-bar-section ul li a:hover {
-  background-color: #222222;
-}
-
 .white {
   color: #fff;
+}
+
+.green {
+  color: #09c12b;
 }
 
 i {
@@ -65,7 +64,7 @@ body {
 }
 
 .box {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   padding: 2%;
   border-radius: 10px;
   margin: 10px;
@@ -74,19 +73,17 @@ body {
 }
 
 button {
-  width: 100%;
-  height: 80%;
-  border-radius: 10px;
-  font-size: 100%;
-  background-color: #09c12b;
-  width: 200px;
+  background-color:rgba(10, 10, 255, .1);
+  color: #FFF;
+  width: 60%;
   display: block;
   margin: 0 auto;
-  font-size: 30px;
-  padding: 5px;
-  border-radius: 4px;
-  font-family: Impossible2, sans-serif;
+  margin-top: 20px;
+  font-size: 1.3em;
+  border-radius: 0px;
+  font-family: 'Lekton', sans-serif;
   margin-bottom: 10px;
+  padding: .5em 1.5em;
 }
 
 #hours{
@@ -134,4 +131,25 @@ button {
   margin: 0 auto;
   margin-bottom: 20px;
 }
+input[type="text"] {
+  font-family: 'Lekton', sans-serif;
+  background-color: rgba(9, 165, 38, 0.5)
+}
 
+ input[type="text"]:focus {    
+  background-color: rgba(9, 165, 38, 0.55);
+}
+
+#task {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  font-size: 1.8em;
+  border-radius: 6px;
+  padding: .4em;
+  
+}
+.nav {
+  padding-left: 1.5em;
+  padding-top: .3em;
+}

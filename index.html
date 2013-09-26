@@ -14,30 +14,33 @@
 </head>
   <body>
     <div class="row">
-      <nav class="top-bar contain-to-grid">
-        <ul class="right"> 
-          <form>
-            <li class="divider left large-1 small-1">
-              <i class="icon-facebook-sign white icon-large"></i>
-            </li>  
-            <li class="username divider left large-4 small-5">
-              <input type="text" placeholder="Username" name="username" id="username"/>
-            </li>
-              <li class="divider left large-1 small-1">
-                <i class="icon-key white icon-large"></i>
-              </li>
-            <li class="divider left large-4 small-5">
-              <input type="password" placeholder="Password" name="password">
-            </li>
-          </form>
-        </ul>
+      <nav class="top-bar large-12 contain-to-grid login">
+        <ul class="nav">
+          <li class="left large-8 hide-for-small ">
+            Welcome agent <span class = "auth username"></span>
+            <span class="noauth "> please verify your identity 
+            </span> 
+          </li> 
+          <li class=" right large-2 small-4 noauth">
+            <i class="icon-facebook-sign green icon-large"
+            ></i>
+            Login
+          </li>  
+          <li class=" right large-2 small-4 auth">
+            <i class="icon-key green icon-large"></i>
+            Logout
+          </li> 
+         </ul>
       </nav>
     </div>
     <div class="row container">  
       <div class="column large-8 small-9 Absolute-Center ">
         <div class="row box">
           <h1 class="center"> { MI:List }</h1>
-          <h4 class="center"> Enter objectives to complete before this mission self destructs
+        <h4 class="center auth"> Enter objectives to complete before this mission self destructs
+          </h4>
+          <h4 class="noauth green center"><i class="icon-spinner icon-spin icon-large "></i>
+            <br>Waiting for Identity Verification
           </h4>
         </div>
         <div class="row box">
@@ -45,7 +48,7 @@
             <div class="countdown">
               <div id="countdown"></div>
             </div>
-            <input type='text' name='task' class='task' placeholder='Enter Mission Objectives:'>
+            <input type='text' name='task' id='task' placeholder='Enter Mission Objectives:'>
           </form>
         </div> 
         <div class='row box'>
