@@ -206,8 +206,10 @@ var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
     if (error) {
         console.log("Login error: ", error.code);
     } else if (user) {
-        console.log(user)
-        alert("Logged in as ", user.id);
+        console.log(user);
+        console.log(user.username);
+        console.log(user.displayName);
+        alert("Logged in as ", user.displayName);
     } else {
         console.log("Not logged in");
     }
