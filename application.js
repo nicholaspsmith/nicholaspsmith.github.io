@@ -209,7 +209,7 @@ var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
         console.log(user);
         console.log(user.username);
         console.log(user.displayName);
-        alert("Logged in as ", user.displayName);
+        alert("Welcome " + user.first_name + ", are you ready?");
     } else {
         console.log("Not logged in");
     }
