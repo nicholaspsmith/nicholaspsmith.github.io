@@ -58,7 +58,7 @@ body {
 /*  background-image: url(images/MI-Back.jpg);
 */  background-color: #eee;
     background-image: url(images/world.gif);
-    background-size: 1500px 900px ;
+    background-size: auto 900px ;
     /*sizing background to be full screen and not repeat */
   }
 
