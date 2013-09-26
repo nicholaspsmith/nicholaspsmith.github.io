@@ -58,10 +58,9 @@ body {
 /*  background-image: url(images/MI-Back.jpg);
 */  background-color: #eee;
     background-image: url(images/world.gif);
-    background-repeat: vertical;
-    background-size: 100%;
-
-}
+    background-size: 1500px 900px ;
+    /*sizing background to be full screen and not repeat */
+  }
 
 .box {
   background: rgba(0, 0, 0, 0.8);
