@@ -204,7 +204,7 @@ firebaseDue.on('child_changed', function () {
 var firebaseAuth = new Firebase('https://todonkey.firebaseio.com/');
 var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
     if (error) {
-        console.log("login error: ", error);
+        console.log("Login error: ", error.code);
     } else if (user) {
         console.log(user)
         alert("Logged in as ", user.id);
