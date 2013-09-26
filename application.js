@@ -211,10 +211,12 @@ var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
         auth.id = user.id;
         auth.name = user.name;
         auth.provider = "facebook";
+        $('.auth').show();
+        $('.noauth').hide();
 
-    } else {
-        console.log('TODO');
-        // TODO show stuff that fremen tells me to 
+    } else {  
+        $('.auth').hide();
+        $('.noauth').show();
     }
 });
 
