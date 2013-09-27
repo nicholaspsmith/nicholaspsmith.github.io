@@ -15,6 +15,4 @@ Built with jQuery and Firebase API
 
 ### TODO css
 
-* textbox on focus font light grey not black
-* improve item /task style, user font awesome icon for checkboxes
 * main content margin decrease on smaller screens yo.
