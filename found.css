@@ -18,6 +18,10 @@ h1{
   font-family: Impossible, sans-serif;
   margin: 0 auto;
 }
+
+h3 {
+  text-align: center;
+}
 .item, h4, p, li  {
   font-family: 'Lekton', sans-serif;
   color: #09c12b;
