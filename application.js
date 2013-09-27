@@ -37,7 +37,8 @@ var checkComplete = function () {
 
     firebase.once('value', function (allMessagesSnapshot) {
         allMessagesSnapshot.forEach(function (messageSnapshot) {
-            // Will be called with a messageSnapshot for each message under message_list.
+            // Will be called with a messageSnapshot for each message 
+            // under message_list.
             var complete;
             complete = messageSnapshot.child('complete').val();
 
@@ -153,16 +154,14 @@ $(document).on('click', '#start', function (e) {
     "use strict";
     e.preventDefault();
 
-    timeLeft = $('#hours').val();
+    timeLeft = $('#minutes').val();
     // convert to seconds
-    timeLeft *= 3600;
+    timeLeft *= 60;
 
     if (timeLeft > 0) {
         // Get time (in millis) and convert to seconds
         var settime =  new Date().getTime() / 1000 + timeLeft;
-
         firebaseDue.set({'due': settime});
-
         start();
     }
 });
@@ -213,8 +212,8 @@ var auth = new FirebaseSimpleLogin(firebaseAuth, function(error, user) {
         auth.provider = "facebook";
         $('.auth').show();
         $('.noauth').hide();
-
     } else {  
+        console.log('logout');
         $('.auth').hide();
         $('.noauth').show();
     }
