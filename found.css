@@ -23,13 +23,22 @@ h1{
   color: #09c12b;
   font-weight: normal;
 }
-
+.item {
+  padding:.4em 1.5em; 
+  /*background-color: rgba(22, 48, 23, 0.2);*/
+  margin: 2px 0px;
+  list-style-type: lower-greek; 
+}
 .white {
   color: #fff;
 }
 
 .green {
   color: #09c12b;
+}
+
+ li {
+border-bottom: 1px dotted grey;
 }
 
 i {
@@ -50,9 +59,17 @@ i {
 }
 
 .container {
-  margin-top:50px ;
+  margin-top:0px ;
   position: absolute;
 }
+@media only screen and (min-width: 768px) 
+  {
+    .container {
+  margin-top:50px ;
+  position: absolute;
+    }
+
+  }
 
 body {
 /*  background-image: url(images/MI-Back.jpg);
@@ -66,10 +83,10 @@ body {
   background: rgba(0, 0, 0, 0.8);
   padding: 2%;
   border-radius: 10px;
-  margin: 10px;
   border-width: 2px;
   border-color: #26d632;
 }
+
 
 button {
   background-color:rgba(10, 10, 255, .1);
