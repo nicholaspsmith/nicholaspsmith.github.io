@@ -41,9 +41,6 @@ h3 {
   color: #09c12b;
 }
 
- li {
-border-bottom: 1px dotted grey;
-}
 
 i {
 /*  vertical-align: middle;*/
@@ -62,18 +59,8 @@ i {
   vertical-align: center;
 }
 
-.container {
-  margin-top:0px;
-  position: absolute;
-}
-@media only screen and (min-width: 768px) 
-  {
-    .container {
-    margin-top:50px ;
-    position: relative;
-    }
 
-  }
+
 
 body {
 /*  background-image: url(images/MI-Back.jpg);
@@ -92,7 +79,7 @@ body {
 }
 
 
-button {
+#start {
   background-color:rgba(10, 10, 255, .1);
   color: #FFF;
   width: 60%;
@@ -168,17 +155,47 @@ input[type="text"] {
   padding: .4em;
   
 }
-.nav {
-  padding-left: 1.5em;
-  padding-top: .3em;
-}
 
-.login.small-4#top-login{
+.top-bar {
+  border-bottom: 1px double green;
+  padding: 10px 20px;
+} 
+
+.login.small-4.top-login{
   display: none !important;
 }
 
+.welcome {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  margin-top:0px;
+  position: absolute;
+}
+
 @media only screen and (min-width: 768px) {
-  .login.small-4#top-login{
+  .login.small-4.top-login{
     display: inline !important;
+    background: black;
+    color: white;
+    border: none;
+    height: 100%;
+    font-size: 14px;
+  }
+
+  .welcome {
+    width: 50%;
+    text-align: left;
+  }
+
+  .container {
+  margin-top:50px ;
+  position: relative;
   }
 }
+
+
+
