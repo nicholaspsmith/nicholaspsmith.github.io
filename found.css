@@ -63,14 +63,14 @@ i {
 }
 
 .container {
-  margin-top:0px ;
+  margin-top:0px;
   position: absolute;
 }
 @media only screen and (min-width: 768px) 
   {
     .container {
-  margin-top:50px ;
-  position: absolute;
+    margin-top:50px ;
+    position: relative;
     }
 
   }
@@ -171,4 +171,14 @@ input[type="text"] {
 .nav {
   padding-left: 1.5em;
   padding-top: .3em;
+}
+
+.login.small-4#top-login{
+  display: none !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .login.small-4#top-login{
+    display: inline !important;
+  }
 }

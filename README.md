@@ -7,12 +7,4 @@ Mission List
 
 Built with jQuery and Firebase API
 
-1.0
-
-
-
-///
-
-### TODO css
-
-* main content margin decrease on smaller screens yo.
+v1.01
